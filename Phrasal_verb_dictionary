@@ -1,0 +1,15 @@
+Phrasal_verbs = {
+	"1": 
+	{
+	"PrasalVerb":"Dig Up"
+	"Meaning": "To investigate something that someone tried to cover."
+	"pt" : "Desenterrar , encontrar"
+	"Examples": [
+				 "Katie was often singled out for punishment.",
+				 "The reviewer singled her performance out for praise.",
+				 "She was singled out for criticism.",
+				 "We wanted to single out the main threat to civilization."
+				 ]
+	},
+
+}

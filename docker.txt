@@ -1,0 +1,113 @@
+docker pull img_name
+
+-- downloads an image from docker hub but does not start it.
+
+docker run con_name
+
+-- command that runs one existing container.
+-- if image does not exist on the host, image will be download from docker hub.
+
+docker run -d con_name
+
+-- runs the containser in the detached mode, which means that the prompt will be released back to the user.
+
+docker run --name con_name -d image:tag 
+
+-- Creates a container named con_name using the image and the tag (usually version) to build it.
+-- if tag is LATEST it does not need to be informed. It is the lastest version available of that software.
+
+docker run -it con_name
+
+-- runs the container in interactive mode, accepting input.
+
+docker run -e "VAR_NAME=var_val" con_name
+
+-- creates the container con_name and modifies the value of the variable VAR_NAME to var_val
+
+docker run -p 80:5000 con_name
+
+-- runs the container mapping port 5000 of the container to the port 80 on the host.
+-- thus, to access port 5000 in the container just user host_ip_address:80
+
+docker run -v /opt/datadir:/var/lib/mysql mysql
+
+-- run the mysql container mapping the datadir to a directory in the host, thus persisting if even if the container is removed.
+
+
+docker atach con_id
+
+-- attaches to a running container
+
+
+docker ps
+
+-- lists all running containers
+
+
+docker ps -a
+
+-- lists all containers
+
+
+docker stop con_name
+
+-- stops a running container
+
+
+docker images 
+
+-- lists all images on the host.
+
+
+docker rm con_name
+
+-- removes container permanently 
+
+docker rmi img_name
+
+-- removes an image from the host permanently
+-- does not work if there is a container using the image.
+
+
+docker exec con_name command_to_run
+
+-- executes a command inside a running container.
+
+
+docker inspect con_name 
+
+-- displays a json with detailed information on the container.
+
+docker logs con_name
+
+-- show the logs inside the container.
+
+
+docker build . img_name
+
+-- builds an image using the DockerFile in the current directory and name it img_name
+
+docker volume create volume_name
+
+-- creates a new folder inside /var/lib/docker/volumes on the host named volume_name and creates a volume object that can be mounted to the containers to persist storage.
+
+docker run -v volume_name:/var/lib/mysql mysql
+
+-- starts the container using mysql image and mount the container's /var/lib/mysql to the hosts' volume object volume_name
+
+docker run -- mount type=bind,source=/data/mysql,target=/var/lib/mysql mysql
+
+-- starts the container same way as with -v .
+
+ docker network ls
+
+ -- lists network configuration
+
+ docker network inspect bridge
+
+ -- displays detailed info on the bridge network
+
+
+ docker network create --driver bridge --subnet 182.18.0.1/24 --gateway 182.18.0.1 wp-mysql-network
+
+ -- create a new network of type bridge in the subnet 182.18.0.x
